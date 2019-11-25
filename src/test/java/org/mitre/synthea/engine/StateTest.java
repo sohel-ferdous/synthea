@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.withSettings;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class StateTest {
     person.attributes.put(Person.OCCUPATION_LEVEL, 1.0);
 
     person.history = new LinkedList<>();
-    Provider mock = Mockito.mock(Provider.class);
+    Provider mock = Mockito.mock(Provider.class, withSettings().serializable());
     mock.uuid = "Mock-UUID";
     person.setProvider(EncounterType.AMBULATORY, mock);
     person.setProvider(EncounterType.WELLNESS, mock);
